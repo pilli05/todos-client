@@ -11,3 +11,16 @@ body {
 .home-container {
   background: linear-gradient(to right, #c7f7de, #f2f8c4);
 }
+
+@media screen and (max-width: 640px) {
+  .mobile-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .mobile-view > div > select {
+    width: 200px;
+  }
+}

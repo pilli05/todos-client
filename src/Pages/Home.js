@@ -193,7 +193,7 @@ const Home = () => {
           <h1 className="text-blue-700 font-bold text-2xl mb-5">
             {showEditButton ? "Edit Todo" : "Todo Details"}
           </h1>
-          <div className="flex justify-start items-center">
+          <div className="flex  justify-start items-center mobile-view">
             <div className="mr-5">
               <label
                 htmlFor="description"
@@ -204,7 +204,7 @@ const Home = () => {
               <br />
               <input
                 id="description"
-                className="outline-none border-2 border-gray-700 rounded p-2 mt-1 w-[300px]"
+                className="outline-none border-2 border-gray-700 rounded p-2 mt-1 lg:w-[300px] sm:w-[250px]"
                 name="description"
                 onChange={handleInput}
                 value={formData.description}
@@ -217,7 +217,7 @@ const Home = () => {
               <br />
               <select
                 id="status"
-                className="outline-none border-2 border-gray-700 rounded p-2 mt-1 w-[300px]"
+                className="outline-none border-2 border-gray-700 rounded p-2 mt-1 lg:w-[300px] sm:w-[250px]"
                 name="status"
                 onChange={handleInput}
                 value={formData.status}
