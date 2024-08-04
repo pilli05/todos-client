@@ -18,6 +18,7 @@ const Home = () => {
 
   const userName = localStorage.getItem("userName");
   const userId = localStorage.getItem("userId");
+  const token = localStorage.getItem("token");
 
   const handleLogout = () => {
     localStorage.removeItem("userName");
@@ -40,7 +41,6 @@ const Home = () => {
     if (showEditButton) {
       e.preventDefault();
 
-      const url = `${process.env.REACT_APP_API_BASE_URL}/todos`;
       const { description, status } = formData;
       const payLoad = {
         description: description,
@@ -51,7 +51,12 @@ const Home = () => {
       try {
         const response = await axios.put(
           `${process.env.REACT_APP_API_BASE_URL}/todos/${todoId}`,
-          payLoad
+          payLoad,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         if (response.data.status) {
           toast.success("Todo Updated Successfully");
@@ -71,7 +76,11 @@ const Home = () => {
         user_id: parseInt(userId),
       };
       try {
-        const response = await axios.post(url, payLoad);
+        const response = await axios.post(url, payLoad, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (response.data.status) {
           toast.success("Todo Added Successfully");
           setShowAddTodo(false);
@@ -91,7 +100,11 @@ const Home = () => {
   const getAllTodos = async () => {
     const url = `${process.env.REACT_APP_API_BASE_URL}/todos`;
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.data.status) {
         setAllTodos(response.data.todos);
       }
@@ -112,7 +125,11 @@ const Home = () => {
     setTodoId(todo.id);
     const url = `${process.env.REACT_APP_API_BASE_URL}/todos/${todo.id}`;
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.data.status) {
         setFormData(response.data.todo);
       }
@@ -124,7 +141,12 @@ const Home = () => {
   const handleDeleteTodo = async (id) => {
     const url = `${process.env.REACT_APP_API_BASE_URL}/todos/${id}`;
     try {
-      const response = await axios.delete(url);
+      const response = await axios.delete(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       if (response.data.status) {
         toast.success(response.data.message);
         getAllTodos();
@@ -146,23 +168,25 @@ const Home = () => {
           alt="todo-logo"
           className="w-[100px]"
         />
-        <div className="flex items-center">
+        {userName ? (
           <div className="flex items-center">
-            <FaUserCircle
-              className="mr-2 items-center"
-              size={25}
-              color="green"
-            />
-            <span className="text-gray-700">{userName}</span>
-          </div>
+            <div className="flex items-center">
+              <FaUserCircle
+                className="mr-2 items-center"
+                size={25}
+                color="green"
+              />
+              <span className="text-gray-700">{userName}</span>
+            </div>
 
-          <AiOutlineLogout
-            onClick={handleLogout}
-            size={25}
-            color="red"
-            className="ml-5 cursor-pointer"
-          />
-        </div>
+            <AiOutlineLogout
+              onClick={handleLogout}
+              size={25}
+              color="red"
+              className="ml-5 cursor-pointer"
+            />
+          </div>
+        ) : null}
       </navbar>
       {showAddTodo ? (
         <form className="mt-16 px-20" onSubmit={handleAddTodoForm}>

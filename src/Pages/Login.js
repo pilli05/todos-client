@@ -43,10 +43,10 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[100vh] w-[100vw] flex justify-center items-center">
-      <div className=" w-[30vw] bg-slate-100 rounded-lg shadow p-5">
+    <div className="h-[100vh] w-[100vw] flex justify-center items-center bg-slate-100">
+      <div className="sm:w-[100vw] lg:w-[30vw] bg-white rounded-lg shadow-xl border-2 border-yellow-400 p-5">
         <h1 className="text-3xl font-bold text-indigo-800 text-center">
-          Login Form
+          Login
         </h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-3 mt-3">
@@ -76,7 +76,7 @@ const Login = () => {
             />
           </div>
           <button
-            className="bg-blue-600 p-2 text-white rounded mt-5"
+            className="hover:bg-blue-600 p-2 hover:text-white rounded mt-5 border-2 border-blue-600 text-blue-600 font-semibold"
             type="submit"
           >
             Login
