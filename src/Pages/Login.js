@@ -11,6 +11,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const { username, password } = formData;
+
+    if (!username || !password) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
     const url = `${process.env.REACT_APP_API_BASE_URL}/login`;
 
     const payLoad = {
@@ -51,7 +58,7 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb-3 mt-3">
             <label htmlFor="username" className="font-semibold">
-              User Name:
+              User Name*
             </label>
             <br />
             <input
@@ -64,7 +71,7 @@ const Login = () => {
           </div>
           <div>
             <label htmlFor="password" className="font-semibold">
-              Password:
+              Password*
             </label>
             <br />
             <input

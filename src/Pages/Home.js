@@ -42,6 +42,10 @@ const Home = () => {
       e.preventDefault();
 
       const { description, status } = formData;
+      if (!description || !status) {
+        toast.error("Please fill all fields!");
+        return;
+      }
       const payLoad = {
         description: description,
         status: status,
@@ -68,8 +72,13 @@ const Home = () => {
       }
     } else {
       e.preventDefault();
-      const url = `${process.env.REACT_APP_API_BASE_URL}/todos`;
       const { description, status } = formData;
+      if (!description || !status) {
+        toast.error("Please fill all fields!");
+        return;
+      }
+      const url = `${process.env.REACT_APP_API_BASE_URL}/todos`;
+
       const payLoad = {
         description: description,
         status: status,
@@ -191,7 +200,7 @@ const Home = () => {
       {showAddTodo ? (
         <form className="mt-16 px-20" onSubmit={handleAddTodoForm}>
           <h1 className="text-blue-700 font-bold text-2xl mb-5">
-            {showEditButton ? "Edit Todo" : "Todo Details"}
+            {showEditButton ? "Update Todo" : "Todo Details"}
           </h1>
           <div className="flex  justify-start items-center mobile-view">
             <div className="mr-5">
@@ -199,7 +208,7 @@ const Home = () => {
                 htmlFor="description"
                 className="font-medium text-gray-700"
               >
-                Description:
+                Description*
               </label>
               <br />
               <input
@@ -212,7 +221,7 @@ const Home = () => {
             </div>
             <div>
               <label htmlFor="status" className="font-medium text-gray-700">
-                Status:
+                Status*
               </label>
               <br />
               <select
@@ -235,7 +244,7 @@ const Home = () => {
                 className="bg-blue-600 py-2 px-4 text-white rounded-lg  border-2 font-semibold "
                 type="submit"
               >
-                Edit
+                Update
               </button>
             ) : (
               <button
