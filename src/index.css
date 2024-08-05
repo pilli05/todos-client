@@ -20,7 +20,11 @@ body {
     align-items: flex-start;
   }
 
+  .mobile-view > div > input {
+    width: 250px;
+  }
+
   .mobile-view > div > select {
-    width: 200px;
+    width: 250px;
   }
 }
