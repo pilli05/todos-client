@@ -93,7 +93,7 @@ const Login = () => {
           </div>
 
           <button
-            className="hover:bg-purple-700 p-2 hover:text-white rounded mt-5 border-2 border-purple-700 text-purple-700 font-semibold"
+            className="hover:bg-purple-700 px-3 py-1 hover:text-white rounded mt-5 border-2 border-purple-700 text-purple-700 font-semibold"
             type="submit"
           >
             Login
