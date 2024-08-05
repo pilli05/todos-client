@@ -50,8 +50,17 @@ const Register = () => {
 
   return (
     <div className="h-[100vh] w-[100vw] flex justify-center items-center bg-slate-100">
-      <div className="sm:w-[100vw] lg:w-[30vw] bg-white rounded-lg shadow-xl border-2 border-yellow-400 p-5">
-        <h1 className="text-3xl font-bold text-indigo-800 text-center">
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        autoPlay
+        muted
+        loop
+      >
+        <source src="/background-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="sm:w-[100vw] lg:w-[30vw] bg-transparent rounded-lg shadow-xl  p-5 relative z-10">
+        <h1 className="text-3xl font-bold text-purple-600 text-center">
           Registration
         </h1>
         <form onSubmit={handleSubmit}>
@@ -63,7 +72,7 @@ const Register = () => {
             <input
               type="text"
               id="username"
-              className="outline-none border-2 border-gray-700 rounded p-2 mt-1"
+              className="outline-none border-2 border-black rounded p-2 mt-1 bg-transparent"
               onChange={handleInput}
               name="username"
               value={formData.username}
@@ -77,22 +86,25 @@ const Register = () => {
             <input
               type="text"
               id="password"
-              className="outline-none border-2 border-gray-700 rounded p-2 mt-1"
+              className="outline-none border-2 border-black rounded p-2 mt-1 bg-transparent"
               onChange={handleInput}
               name="password"
               value={formData.password}
             />
           </div>
           <button
-            className="hover:bg-blue-600 p-2 hover:text-white rounded mt-5 border-2 border-blue-600 text-blue-600 font-semibold"
+            className="hover:bg-purple-600 p-2 hover:text-white rounded mt-5 border-2 border-purple-600 text-purple-600 font-semibold"
             type="submit"
           >
             Register Now
           </button>
         </form>
-        <p className="mt-5 text-gray-700 font-semibold text-sm">
+        <p className="mt-5 text-black font-semibold text-sm text-center">
           If Already registered{" "}
-          <Link className="text-blue-700 cursor-pointer" to="/login">
+          <Link
+            className="text-purple-600 cursor-pointer hover:italic hover:underline"
+            to="/login"
+          >
             Login{" "}
           </Link>{" "}
           here!
