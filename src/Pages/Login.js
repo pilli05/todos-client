@@ -18,7 +18,7 @@ const Login = () => {
       return;
     }
 
-    const url = `${process.env.REACT_APP_API_BASE_URL}/login`;
+    const url = `http://localhost:5000/login`;
 
     const payLoad = {
       username: formData.username,

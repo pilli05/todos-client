@@ -23,7 +23,7 @@ const Register = () => {
       return;
     }
 
-    const url = `${process.env.REACT_APP_API_BASE_URL}/register`;
+    const url = `http://localhost:5000/register`;
 
     const payLoad = {
       username: formData.username,

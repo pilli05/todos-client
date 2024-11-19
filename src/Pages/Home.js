@@ -54,7 +54,7 @@ const Home = () => {
 
       try {
         const response = await axios.put(
-          `${process.env.REACT_APP_API_BASE_URL}/todos/${todoId}`,
+          `http://localhost:5000/todos/${todoId}`,
           payLoad,
           {
             headers: {
@@ -77,7 +77,7 @@ const Home = () => {
         toast.error("Please fill all fields!");
         return;
       }
-      const url = `${process.env.REACT_APP_API_BASE_URL}/todos`;
+      const url = `http://localhost:5000/todos`;
 
       const payLoad = {
         description: description,
@@ -107,7 +107,7 @@ const Home = () => {
   };
 
   const getAllTodos = async () => {
-    const url = `${process.env.REACT_APP_API_BASE_URL}/todos`;
+    const url = `http://localhost:5000/todos`;
     try {
       const response = await axios.get(url, {
         headers: {
@@ -132,7 +132,7 @@ const Home = () => {
     setShowAddTodo(true);
     setShowEditButton(true);
     setTodoId(todo.id);
-    const url = `${process.env.REACT_APP_API_BASE_URL}/todos/${todo.id}`;
+    const url = `http://localhost:5000/todos/${todo.id}`;
     try {
       const response = await axios.get(url, {
         headers: {
@@ -148,7 +148,7 @@ const Home = () => {
   };
 
   const handleDeleteTodo = async (id) => {
-    const url = `${process.env.REACT_APP_API_BASE_URL}/todos/${id}`;
+    const url = `http://localhost:5000/todos/${id}`;
     try {
       const response = await axios.delete(url, {
         headers: {
